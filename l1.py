@@ -15,20 +15,22 @@ def opt_l1(A, b, _lambda, epsilon):
 	d = A.shape[0]
 	x = np.zeros(d)
 	converged = False
-	while norm(A.dot(x)-b) > epsilon:
+	while np.linalg.norm(A.dot(x)-b) > epsilon:
 		for i in range(d):
 		# 2*A{i}'*((A{-i}*x{-i}+A{i}x{i}-y)) + delta|x{i}| = 0
 			A_negI = A[:,[idx for idx in range(d) if idx!=i]]
 			A_i = A[:,i]
 			x_negI = x[[idx for idx in range(d) if idx!=i]]
-			t = lambda_/A_i.dot(A_i)
-			y = A_i.dot(y-A_negI.dot(x_negI))/A_i.dot(A_i)
+			t = _lambda/A_i.dot(A_i)
+			y = A_i.dot(b-A_negI.dot(x_negI))/A_i.dot(A_i)
 			if y > t:
-				x_i = y-t
+				x[i] = y-t
 			elif y < t:
-				x_i = y+t
+				x[i] = y+t
 			else:
-				x_i = 0			
+				x[i] = 0
+		print x
+		print np.linalg.norm(A.dot(x)-b,2)			
 	return x
 	
 
