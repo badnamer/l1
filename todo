@@ -1,0 +1,6 @@
+- a proper stopping criteria. can't just check the 'descent' since there's no gaurantee for descent
+- testing
+- plotting
+- sklearn style class
+- shotgun algo
+
