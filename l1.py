@@ -12,7 +12,7 @@ A[:,[x for x in range(3) if x != 1]]
 def opt_l1(A, b, _lambda, epsilon):
 	'''minimizes ||Ax-b||_2 + lambda*||x||_1'''
 	# initial x
-	d = A.shape[0]
+	d = A.shape[1]
 	x = np.zeros(d)
 	converged = False
 	while np.linalg.norm(A.dot(x)-b) > epsilon:
