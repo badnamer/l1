@@ -1,4 +1,4 @@
-- a proper stopping criteria. can't just check the 'descent' since there's no gaurantee for descent
+- optimize inner loop. no need to recompute the dot product each coordinate
 - testing
 - plotting
 - sklearn style class
